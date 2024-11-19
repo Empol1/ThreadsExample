@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,9 +65,16 @@ fun TimerScreen(
                 strokeWidth = 3.dp,
                 color = Color.Green
             )
+
+            // Check if remaining time is less than or equal to 10 seconds
+            val isLast10Seconds = timerViewModel.remainingMillis <= 10_000L
+
             Text(
                 text = timerText(timerViewModel.remainingMillis),
-                fontSize = 55.sp,
+                fontSize = 50.sp,
+                color = if (isLast10Seconds) Color.Red else Color.Black, // Make text red in the last 10 seconds
+                modifier = Modifier.padding(8.dp),
+                fontWeight = if (isLast10Seconds) FontWeight.Bold else FontWeight.Normal // Make text bold in the last 10 seconds
             )
         }
         TimePicker(
@@ -117,7 +125,7 @@ fun TimePicker(
     sec: Int = 0,
     onTimePick: (Int, Int, Int) -> Unit = { _: Int, _: Int, _: Int -> }
 ) {
-    // Values must be remembered for calls to onPick()
+
     var hourVal by remember { mutableIntStateOf(hour) }
     var minVal by remember { mutableIntStateOf(min) }
     var secVal by remember { mutableIntStateOf(sec) }

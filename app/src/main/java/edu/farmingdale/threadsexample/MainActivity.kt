@@ -45,5 +45,5 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 // DONE 4: Make the Text of the timer larger
 // DONE 5: Show a visual indicator of the timer going down to 0
 // DONE 6: Add a button to rest the timer
-// ToDo 7: Play a sound when the timer reaches 0
-// ToDo 8: During the last 10 seconds, make the text red and bold
+// DONE  7: Play a sound when the timer reaches 0
+// DONE 8: During the last 10 seconds, make the text red and bold

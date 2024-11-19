@@ -11,6 +11,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
+
 class TimerViewModel : ViewModel() {
     private var timerJob: Job? = null
 
@@ -41,7 +43,7 @@ class TimerViewModel : ViewModel() {
     }
 
     fun startTimer() {
-        // Convert hours, minutes, and seconds to milliseconds
+
         totalMillis = (selectedHour * 60 * 60 + selectedMinute * 60 + selectedSecond) * 1000L
 
         // Start coroutine that makes the timer count down
@@ -68,7 +70,7 @@ class TimerViewModel : ViewModel() {
         }
     }
     fun resetTimer() {
-        // Reset remaining time to the initially selected time
+
         remainingMillis = (selectedHour * 60 * 60 + selectedMinute * 60 + selectedSecond) * 1000L
         isRunning = false
         timerJob?.cancel()
